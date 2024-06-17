@@ -3,4 +3,24 @@
 
     <string name="show_less">Show less</string>
     <string name="show_more">Show more</string>
+
+    <string name="soothe_favorite_collections">Favorite Collections</string>
+    <string name="soothe_workout_image">Workout %1$s</string>
+    <string name="soothe_align_your_body">Align your body</string>
+    <string name="soothe_ab1_inversions">Inversions</string>
+    <string name="soothe_ab2_quick_yoga">Quick yoga</string>
+    <string name="soothe_ab3_stretching">Stretching</string>
+    <string name="soothe_ab4_tabata">Tabata</string>
+    <string name="soothe_ab5_hiit">HIIT</string>
+    <string name="soothe_ab6_pre_natal_yoga">Pre-natal yoga</string>
+    <string name="soothe_fc1_short_mantras">Short mantras</string>
+    <string name="soothe_fc2_nature_meditations">Nature meditations</string>
+    <string name="soothe_fc3_stress_and_anxiety">Stress and anxiety</string>
+    <string name="soothe_fc4_self_massage">Self massage</string>
+    <string name="soothe_fc5_overwhelmed">Overwhelmed</string>
+    <string name="soothe_fc6_nightly_wind_down">Nightly wind down</string>
+    <string name="soothe_cd_fab_start">start</string>
+    <string name="soothe_bottom_navigation_home">HOME</string>
+    <string name="soothe_bottom_navigation_profile">PROFILE</string>
+    <string name="soothe_placeholder_search">Search</string>
 </resources>
