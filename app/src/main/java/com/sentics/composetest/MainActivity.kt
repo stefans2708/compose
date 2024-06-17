@@ -52,6 +52,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.coerceAtLeast
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.sentics.composetest.expandables.ExpandableItemsScreen
+import com.sentics.composetest.onboarding.OnboardingScreen
 import com.sentics.composetest.ui.theme.ComposeTestTheme
 
 class MainActivity : ComponentActivity() {
@@ -74,171 +76,9 @@ fun MyApp(modifier: Modifier = Modifier) {
         if (shouldShowOnboarding) {
             OnboardingScreen(onContinueClicked = { shouldShowOnboarding = false })
         } else {
-            GreetingsScreen()
-        }
-    }
-}
-
-@Composable
-fun OnboardingScreen(onContinueClicked: () -> Unit) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = "Welcome to the Basics Code-lab!")
-        ElevatedButton(
-            modifier = Modifier.padding(vertical = 24.dp),
-            onClick = onContinueClicked
-        ) {
-            Text(text = "Continue")
-        }
-    }
-}
-
-@Composable
-fun GreetingsScreen(
-    modifier: Modifier = Modifier,
-    names: List<String> = List(1000) { "$it" }
-) {
-    Scaffold(modifier = modifier.fillMaxSize()) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .padding(vertical = 4.dp)
-                .fillMaxWidth()
-        ) {
-            LazyColumn {
-                item {
-                    Surface(
-                        modifier = Modifier.fillMaxSize(),
-                        color = MaterialTheme.colorScheme.tertiaryContainer,
-                    ) {
-                        Text(
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier.padding(32.dp),
-                            style = MaterialTheme.typography.titleLarge.copy(
-                                fontSize = 18.sp,
-                                fontWeight = FontWeight.Bold,
-                            ),
-                            text = "This  is  header".uppercase()
-                        )
-                    }
-                }
-                itemsIndexed(names) { index, name ->
-                    if (index % 2 == 0) Greeting(name = name) else GreetingCard(name = name)
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    var expanded by remember { mutableStateOf(false) }
-    val extraPadding by animateDpAsState(
-        targetValue = if (expanded) 48.dp else 0.dp, label = "itemPadding",
-        animationSpec = spring(
-            dampingRatio = Spring.DampingRatioMediumBouncy,
-            stiffness = Spring.StiffnessLow
-        )
-    )
-
-    Surface(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 8.dp, vertical = 4.dp),
-        color = MaterialTheme.colorScheme.primary
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier
-                .padding(bottom = extraPadding.coerceAtLeast(0.dp))
-                .fillMaxWidth()
-        ) {
-            Column(modifier = Modifier.padding(24.dp)) {
-                Text(text = "Hello,")
-                Text(text = "$name!")
-            }
-            OutlinedButton(
-                modifier = Modifier.padding(end = 24.dp),
-                enabled = true,
-                border = BorderStroke(width = 2.dp, color = Color.Gray),
-                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 2.dp),
-                colors = ButtonDefaults.outlinedButtonColors(
-                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                ),
-                onClick = { expanded = !expanded }
-            ) {
-                Text(text = stringResource(id = if (expanded) R.string.show_less else R.string.show_more))
-            }
+            ExpandableItemsScreen()
         }
     }
 }
 
 
-@Composable
-fun GreetingCard(name: String, modifier: Modifier = Modifier) {
-    var expanded by remember { mutableStateOf(false) }
-
-    Card(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 8.dp, vertical = 4.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary)
-    ) {
-        Row(
-            verticalAlignment = Alignment.Top,
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier
-                .animateContentSize(
-                    animationSpec = spring(
-                        dampingRatio = Spring.DampingRatioMediumBouncy,
-                        stiffness = Spring.StiffnessLow
-                    )
-                )
-                .fillMaxWidth()
-        ) {
-            Column(
-                modifier = Modifier
-                    .padding(24.dp)
-                    .weight(1f)
-            ) {
-                Text(text = "Hello,")
-                Text(
-                    text = "$name!",
-                    style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.ExtraBold)
-                )
-                if (expanded) {
-                    Text(text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
-                }
-            }
-            IconButton(
-modifier = Modifier.padding(end = 24.dp, top = 24.dp),
-                onClick = { expanded = !expanded }) {
-                Icon(
-                    imageVector = if (expanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
-                    contentDescription = stringResource(id = if (expanded) R.string.show_less else R.string.show_more)
-                )
-            }
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun OnboardingScreenPreview() {
-    ComposeTestTheme {
-        OnboardingScreen {}
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ComposeTestTheme {
-        GreetingsScreen()
-    }
-}
