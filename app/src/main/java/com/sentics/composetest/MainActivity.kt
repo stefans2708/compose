@@ -12,8 +12,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.sentics.composetest.onboarding.OnboardingScreen
-import com.sentics.composetest.statewellness.WellnessScreen
 import com.sentics.composetest.ui.theme.ComposeTestTheme
+import com.sentics.composetest.unscramble.UnscrambleScreen
+import com.sentics.composetest.unscramble.ui.theme.UnscrambleTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +36,8 @@ fun MyApp(modifier: Modifier = Modifier) {
                 OnboardingScreen(onContinueClicked = { shouldShowOnboarding = false })
             }
         } else {
-            ComposeTestTheme {
-                WellnessScreen()
+            UnscrambleTheme {
+                UnscrambleScreen()
             }
         }
     }

@@ -16,7 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sentics.composetest.R
-import com.sentics.composetest.ui.theme_soothe.MySootheTheme
+import com.sentics.composetest.yoga.theme_soothe.MySootheTheme
 
 @Composable
 fun SearchBar(

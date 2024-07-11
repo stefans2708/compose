@@ -1,4 +1,4 @@
-package com.sentics.composetest.ui.theme_soothe
+package com.sentics.composetest.yoga.theme_soothe
 
 import androidx.compose.ui.graphics.Color
 
