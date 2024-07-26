@@ -36,4 +36,9 @@
     <string name="unscramble_exit">Exit</string>
     <string name="unscramble_play_again">Play Again</string>
     <string name="unscramble_wrong_guess">Wrong Guess!</string>
+
+    <string name="grid_add_to_section">Add to section</string>
+    <string name="grid_add_item">Add item</string>
+    <string name="grid_update_item">Update item</string>
+    <string name="grid_save">Save</string>
 </resources>
