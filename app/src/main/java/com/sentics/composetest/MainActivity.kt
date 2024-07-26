@@ -11,6 +11,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.sentics.composetest.grid.GridScreen
+import com.sentics.composetest.grid.data.GridData
 import com.sentics.composetest.onboarding.OnboardingScreen
 import com.sentics.composetest.ui.theme.ComposeTestTheme
 import com.sentics.composetest.unscramble.UnscrambleScreen
@@ -36,8 +38,8 @@ fun MyApp(modifier: Modifier = Modifier) {
                 OnboardingScreen(onContinueClicked = { shouldShowOnboarding = false })
             }
         } else {
-            UnscrambleTheme {
-                UnscrambleScreen()
+            ComposeTestTheme {
+                GridScreen()
             }
         }
     }

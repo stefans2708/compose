@@ -3,6 +3,7 @@
 
     <string name="show_less">Show less</string>
     <string name="show_more">Show more</string>
+    <string name="add_to_section">Add to section</string>
 
     <string name="soothe_favorite_collections">Favorite Collections</string>
     <string name="soothe_workout_image">Workout %1$s</string>
